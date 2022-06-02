@@ -78,7 +78,7 @@ public class Main {
 		 *   - SEQUENCE 
 		 *   - BTREE
 		 */
-		String typeSA = args[0]; 
+		String typeSA = args[0];
 		SparseArrayIF<String> SA;
 		switch (typeSA) {
 		case "SEQUENCE":
