@@ -5,18 +5,31 @@ import es.uned.lsi.eped.DataStructures.Sequence;
 
 public class SparseArraySequence<E> extends Sequence<E> implements SparseArrayIF<E> {
 
+<<<<<<< HEAD
     protected Sequence sequence;
 
     public SparseArraySequence() {
 
+=======
+    protected Sequence< E > sequence;
+    
+    public SparseArraySequence() {
+        super();
+>>>>>>> 4b7003bb6c71ddc4a03bbee4b9b51c45cb1eb132
     }
 
     @Override
     public void set(int pos, E elem) {
+<<<<<<< HEAD
         IndexedPair pair = new IndexedPair(pos, elem);
         this.insertarAlFinal((E)pair);
+=======
+        this.insertarParesOrdenados(pos, elem);
     }
-
+    public void imprimir(){
+        super.imprimir();
+>>>>>>> 4b7003bb6c71ddc4a03bbee4b9b51c45cb1eb132
+    }
     @Override
     public E get(int pos) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -31,4 +44,8 @@ public class SparseArraySequence<E> extends Sequence<E> implements SparseArrayIF
     public IteratorIF<Integer> indexIterator() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b7003bb6c71ddc4a03bbee4b9b51c45cb1eb132
 }
