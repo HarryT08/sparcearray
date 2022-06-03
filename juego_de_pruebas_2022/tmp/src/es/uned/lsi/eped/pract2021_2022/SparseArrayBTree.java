@@ -1,16 +1,18 @@
 package es.uned.lsi.eped.pract2021_2022;
 
-import es.uned.lsi.eped.DataStructures.Sequence;
+import es.uned.lsi.eped.DataStructures.BTree;
+import es.uned.lsi.eped.DataStructures.Collection;
+import es.uned.lsi.eped.DataStructures.IteratorIF;
 
-public class SparseArrayBTree<E> extends Sequence implements SparseArrayIF<E> {
+public class SparseArrayBTree<E> extends Collection<E> implements SparseArrayIF<E> {
 
-	protected BTreeIF<IndexedPair<E>> btree;
-	
-	public SparseArrayBTree() {
-		
-	}
-	
-	private StackIF<Boolean> num2bin(int n) {
+    protected BTree<IndexedPair<E>> btree;
+
+    public SparseArrayBTree() {
+
+    }
+
+    /*private Stack<Boolean> num2bin(int n) {
 		Stack<Boolean> salida = new Stack<Boolean>();
 		if ( n == 0 ) {
 			salida.push(false);
@@ -21,7 +23,34 @@ public class SparseArrayBTree<E> extends Sequence implements SparseArrayIF<E> {
 			}
 		}
 		return salida;
-	}
-		
-	...	
+	}*/
+
+    @Override
+    public void set(int pos, E elem) {
+        System.out.println("");
+    }
+
+    @Override
+    public E get(int pos) {
+        return null;
+    }
+
+    @Override
+    public void delete(int pos) {
+    }
+
+    @Override
+    public IteratorIF<Integer> indexIterator() {
+        return null;
+    }
+
+    @Override
+    public boolean contains(E e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public IteratorIF<E> iterator() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

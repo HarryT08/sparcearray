@@ -35,10 +35,6 @@ public abstract class Sequence<E> extends Collection<E> implements SequenceIF<E>
         public void setNext(NodeSequence n) {
             this.next = n;
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b7003bb6c71ddc4a03bbee4b9b51c45cb1eb132
     }
 
     /* Clase privada que implementa un iterador para la secuencia */
@@ -63,10 +59,6 @@ public abstract class Sequence<E> extends Collection<E> implements SequenceIF<E>
         public void reset() {
             this.currentNode = firstNode;
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b7003bb6c71ddc4a03bbee4b9b51c45cb1eb132
     }
 
     protected NodeSequence firstNode;
@@ -130,104 +122,12 @@ public abstract class Sequence<E> extends Collection<E> implements SequenceIF<E>
     public IteratorIF<E> iterator() {
         return new SequenceIterator();
     }
-
-<<<<<<< HEAD
-    /* Devuelve el nodo i-ésimo de la secuencia        *
-	 * @Pre: 1 <= i <= size()                          */
-=======
-    public void imprimir() {
-        NodeSequence x = this.firstNode;
-        while (x != null) {
-            System.out.println(x.getValue().toString());
-            x = x.getNext();
-        }
-    }
-
-    /*Devuelve el nodo i-ésimo de la secuencia        *
-	 *@Pre: 1 <= i <= size()                          */
->>>>>>> 4b7003bb6c71ddc4a03bbee4b9b51c45cb1eb132
+    
     protected NodeSequence getNode(int i) {
         NodeSequence node = this.firstNode;
         for (int aux = 1; aux < i; aux++) {
             node = node.getNext();
         }
         return node;
-    }
-
-<<<<<<< HEAD
-    protected void insertarAlInicio(E value) {
-        NodeSequence node = new NodeSequence(value);
-        node.setNext(this.firstNode);
-        this.firstNode = node;
-        this.size++;
-    }
-
-    protected void insertarAlFinal(E value) {
-        IndexedPair p = (IndexedPair) value;
-        this.insertarAlInicio(value);
-        NodeSequence node = new NodeSequence(value);
-        NodeSequence cabeza = this.getNode(this.size);
-        cabeza.setNext(node);
-        this.size++;
-=======
-    private void agregarInicio(E element) {
-        NodeSequence nuevo = new NodeSequence(element);
-        nuevo.setNext(this.firstNode);
-        this.firstNode = nuevo;
-        this.size++;
-    }
-
-    /*public void insertarOrdenado(T info){
-        if(this.isEmpty())
-            this.addBegin(info);
-        else{
-            Nodo<T> n = this.cab;
-            Nodo<T> m = n;
-            while(n!=null){
-                Comparable c = (Comparable)info;
-                int ans=c.compareTo(n.getInfo());
-                if(ans<0)
-                    break;
-                m=n;
-                n=n.getSiguiente();
-            }
-            
-            else{
-                m.setSiguiente(new Nodo<>(info, n));
-                this.tam++;
-            }
-        }
-    }*/
-    public void insertarParesOrdenados(int pos, E elem) {
-        if(this.size == 0){
-            IndexedPair toInsert = new IndexedPair(pos, elem);
-            this.agregarInicio((E)toInsert);
-            return;
-        }
-        IndexedPair aux  = new IndexedPair(pos , elem); // ELEMENTO A INSERTAR
-        NodeSequence it = this.firstNode;
-        NodeSequence prev = it;
-        IndexedPair x =  (IndexedPair)it.getValue(); 
-        while(it != null && pos  >  x.getIndex()  ){   
-            prev = it;
-            it = it.getNext();
-            if(it != null)
-                x = (IndexedPair)it.getValue();    
-        }
-        E toInsert = (E)aux;
-        if(it==prev) this.agregarInicio(toInsert);
-        else{
-            prev.setNext(new NodeSequence(toInsert));
-            prev.getNext().setNext(it);
-            this.size++;
-        }
-    }
-
-    protected void insertarAlFinal(E value) {
-        NodeSequence node = new NodeSequence(value);
-        NodeSequence cabeza = this.getNode(super.size - 1);
-        cabeza.setNext(node);
-        super.size++;
->>>>>>> 4b7003bb6c71ddc4a03bbee4b9b51c45cb1eb132
     }
 }

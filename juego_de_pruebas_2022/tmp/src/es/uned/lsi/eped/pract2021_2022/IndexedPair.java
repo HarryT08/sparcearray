@@ -26,4 +26,8 @@ public class IndexedPair<E> {
 	public void setValue(E value) {
 		this.value = value;
 	}
+        public String toString(){
+            String msg = "";
+            return msg+=index + " --> " + value.toString() + "\n";
+        }
 }
