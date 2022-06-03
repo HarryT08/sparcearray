@@ -16,10 +16,9 @@ public class IteratorIndex<E> implements IteratorIF<E> {
 
     @Override
     public E getNext() {
-//        int elem = this.cabeza.getValue().getIndex();
-//        this.cabeza = this.cabeza.getNext();
-//        return elem;
-        return null;
+        E elem = (E) this.cabeza.getValue();
+        this.cabeza = this.cabeza.getNext();
+        return elem;
     }
 
     @Override

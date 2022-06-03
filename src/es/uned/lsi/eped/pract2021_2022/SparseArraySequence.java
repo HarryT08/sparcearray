@@ -79,7 +79,7 @@ public class SparseArraySequence<E> extends Collection<E> implements SparseArray
 
     @Override
     public IteratorIF<Integer> indexIterator() {
-        return new IteratorIndex<Integer>();
+        return new IteratorIndex(this.sequence);
     }
 
     @Override
