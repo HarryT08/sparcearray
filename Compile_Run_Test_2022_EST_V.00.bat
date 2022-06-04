@@ -93,20 +93,20 @@ REM ===
 REM ===========================================
 REM === Comprobacion basica eliminacion nodos ===
 REM ===========================================
-REM echo Prueba basica eliminacion nodos
+echo Prueba basica eliminacion nodos
 REM === DESCOMENTAR LA SIGUIENTE LINEA SI SE QUIERE IMPRIMIR LA ORDEN === 
 REM echo %JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar;juego_de_pruebas_2022/lib/BasicTest.jar" es.uned.lsi.eped.pract2021_2022.MainBateriaPruebas
 
-REM %JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar;juego_de_pruebas_2022/lib/BasicTest.jar" es.uned.lsi.eped.pract2021_2022.MainBateriaPruebas
+%JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar;juego_de_pruebas_2022/lib/BasicTest.jar" es.uned.lsi.eped.pract2021_2022.MainBateriaPruebas
 
-REM if errorlevel 1 (
-	REM echo Ejecucion con errores
-	REM pause
-	REM exit /B 1
-REM )
-REM echo. 
-REM echo.
-REM pause
+if errorlevel 1 (
+	echo Ejecucion con errores
+	pause
+	exit /B 1
+)
+echo. 
+echo.
+pause
 
 
 

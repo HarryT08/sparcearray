@@ -1,25 +1,15 @@
-/*
-<<<<<<< HEAD
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package es.uned.lsi.eped.pract2021_2022;
+
+import java.io.IOException;
 
 public class main2 {
 
     public static void main(String[] args) {
-        SparseArraySequence sp = new SparseArraySequence();
-        sp.set(0, 12);
-        sp.set(5, "asda");
-        sp.set(2, "lol");
-        sp.set(1, 6000);
-        
-        sp.imprimir();
-        
-        IndexedPair p = (IndexedPair) sp.get(5);
-        System.out.println(p.toString());
-        
-        sp.delete(1);
-        sp.imprimir();
+        String[] arg = {"SEQUENCE", "juego_de_pruebas_2022/pruebas/JuegoPruebas_Estudiantes_1000_100.dat", "juego_de_pruebas_2022/salida/Salida_Estudiantes_1000_100_SEQUENCE.dat"};
+        try {
+            Main.main(arg);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

@@ -67,7 +67,7 @@ public class Main {
 		while(it.hasNext()){
 			result.append(it.getNext().toString());
 			if(it.hasNext()){
-				result.append(" ");
+                            result.append(" ");
 			}
 		}
 		return result.toString();
@@ -95,8 +95,8 @@ public class Main {
 		}
 
 		// Fichero de entrada
-		String input = args[1]; 
-		if ( !checkInput(input) ) { return; }	
+		String input = args[1];
+		if ( !checkInput(input) ) { return; }
 		
 		// Fichero de salida
 		String output = args[2];

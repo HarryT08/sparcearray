@@ -6,17 +6,17 @@ import es.uned.lsi.eped.DataStructures.IteratorIF;
  *
  * @author Admin
  */
-public class IteratorIndex<E> implements IteratorIF<E> {
+public class IteratorIndex implements IteratorIF<Integer> {
 
-    private NodeIndexedPair<E> cabeza;
+    private NodeIndexedPair cabeza;
 
     public IteratorIndex(NodeIndexedPair cabeza) {
         this.cabeza = cabeza;
     }
 
     @Override
-    public E getNext() {
-        E elem = (E) this.cabeza.getValue();
+    public Integer getNext() {
+        Integer elem = this.cabeza.getValue().getIndex();
         this.cabeza = this.cabeza.getNext();
         return elem;
     }
@@ -28,7 +28,7 @@ public class IteratorIndex<E> implements IteratorIF<E> {
 
     @Override
     public void reset() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.cabeza = null;
     }
 
 }
