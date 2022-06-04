@@ -65,24 +65,23 @@ public class SparseArraySequence<E> extends Collection<E> implements SparseArray
         if (this.size == 0) {
             return;
         }
-        NodeIndexedPair it = this.sequence;
-        IndexedPair pair = it.getValue();
-        if (pair.getIndex() == pos) {
+        if (this.sequence.getValue().getIndex() == pos) {
             this.sequence = this.sequence.getNext();
             this.size--;
             return;
         }
 
-        NodeIndexedPair prev = it;
-        while (it != null) {
-            pair = it.getValue();
+        NodeIndexedPair actual = this.sequence;
+        NodeIndexedPair prev = actual;
+        while (actual != null) {
+            IndexedPair pair = actual.getValue();
             if (pair.getIndex() == pos) {
-                prev.setNext(it.getNext());
+                prev.setNext(actual.getNext());
                 this.size--;
                 return;
             }
-            prev = it;
-            it = it.getNext();
+            prev = actual;
+            actual = actual.getNext();
         }
     }
 

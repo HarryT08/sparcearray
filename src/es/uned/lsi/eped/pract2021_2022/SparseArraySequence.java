@@ -5,7 +5,6 @@ import es.uned.lsi.eped.DataStructures.IteratorIF;
 
 public class SparseArraySequence<E> extends Collection<E> implements SparseArrayIF<E> {
 
-    protected NodeIndexedPair sequence;
 
     private class SparseArrayIterator implements IteratorIF<String> {
 
@@ -32,15 +31,19 @@ public class SparseArraySequence<E> extends Collection<E> implements SparseArray
             this.currentNode = sequence;
         }
     }
-
+    
     @Override
-    public void clear() {
-        super.clear();
-        /* Vaciamos la colección */
-        this.sequence = null;
-        /* La secuencia es vacía */
+    public IteratorIF<E> iterator() {
+        return (IteratorIF<E>) new SparseArrayIterator();
     }
-
+    
+    @Override
+    public IteratorIF<Integer> indexIterator() {
+        return new SparseIteratorIndex(this.sequence);
+    }
+    
+    protected NodeIndexedPair sequence;
+    
     public SparseArraySequence() {
         sequence = null;
     }
@@ -48,71 +51,6 @@ public class SparseArraySequence<E> extends Collection<E> implements SparseArray
     @Override
     public void set(int pos, E elem) {
         this.insertarParesOrdenados(pos, elem);
-    }
-
-    @Override
-    public E get(int pos) {
-        for (NodeIndexedPair x = this.sequence; x != null; x = x.getNext()) {
-            if (x.getValue().getIndex() == pos) {
-                return (E) x.getValue().getValue().toString();
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public void delete(int pos) {
-        if (this.size == 0) {
-            return;
-        }
-        NodeIndexedPair it = this.sequence;
-        IndexedPair pair = it.getValue();
-        if (pair.getIndex() == pos) {
-            this.sequence = this.sequence.getNext();
-            this.size--;
-            return;
-        }
-
-        NodeIndexedPair prev = it;
-        while (it != null) {
-            pair = it.getValue();
-            if (pair.getIndex() == pos) {
-                prev.setNext(it.getNext());
-                this.size--;
-                return;
-            }
-            prev = it;
-            it = it.getNext();
-        }
-    }
-
-    @Override
-    public IteratorIF<Integer> indexIterator() {
-        return new IteratorIndex(this.sequence);
-    }
-
-    @Override
-    public boolean contains(E e) {
-        for (NodeIndexedPair x = this.sequence; x != null; x = x.getNext()) {
-            if (x.getValue().getValue().equals(e)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public IteratorIF<E> iterator() {
-        return (IteratorIF<E>) new SparseArrayIterator();
-    }
-
-    private NodeIndexedPair getPair(int pos) {
-        for (NodeIndexedPair x = this.sequence; x != null; x = x.getNext()) {
-            if (x.getValue().getIndex() == pos) {
-                return x;
-            }
-        }
-        return null;
     }
 
     private void agregarInicio(IndexedPair element) {
@@ -154,11 +92,65 @@ public class SparseArraySequence<E> extends Collection<E> implements SparseArray
         }
     }
 
-    public void imprimir() {
-        NodeIndexedPair x = this.sequence;
-        while (x != null) {
-            System.out.println(x.getValue().toString());
-            x = x.getNext();
+    @Override
+    public E get(int pos) {
+        for (NodeIndexedPair x = this.sequence; x != null; x = x.getNext()) {
+            if (x.getValue().getIndex() == pos) {
+                return (E) x.getValue().getValue().toString();
+            }
         }
+        return null;
+    }
+
+    @Override
+    public void delete(int pos) {
+        if (this.size == 0) {
+            return;
+        }
+        if (this.sequence.getValue().getIndex() == pos) {
+            this.sequence = this.sequence.getNext();
+            this.size--;
+            return;
+        }
+
+        NodeIndexedPair actual = this.sequence;
+        NodeIndexedPair prev = actual;
+        while (actual != null) {
+            IndexedPair pair = actual.getValue();
+            if (pair.getIndex() == pos) {
+                prev.setNext(actual.getNext());
+                this.size--;
+                return;
+            }
+            prev = actual;
+            actual = actual.getNext();
+        }
+    }
+
+    @Override
+    public boolean contains(E e) {
+        for (NodeIndexedPair x = this.sequence; x != null; x = x.getNext()) {
+            if (x.getValue().getValue().equals(e)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private NodeIndexedPair getPair(int pos) {
+        for (NodeIndexedPair x = this.sequence; x != null; x = x.getNext()) {
+            if (x.getValue().getIndex() == pos) {
+                return x;
+            }
+        }
+        return null;
+    }
+    
+    @Override
+    public void clear() {
+        super.clear();
+        /* Vaciamos la colección */
+        this.sequence = null;
+        /* La secuencia es vacía */
     }
 }
