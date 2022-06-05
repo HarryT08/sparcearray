@@ -1,56 +1,216 @@
 package es.uned.lsi.eped.pract2021_2022;
 
 import es.uned.lsi.eped.DataStructures.BTree;
+import es.uned.lsi.eped.DataStructures.BTreeIF;
 import es.uned.lsi.eped.DataStructures.Collection;
 import es.uned.lsi.eped.DataStructures.IteratorIF;
+import es.uned.lsi.eped.DataStructures.Queue;
+import es.uned.lsi.eped.DataStructures.Stack;
+import java.util.Collections;
 
 public class SparseArrayBTree<E> extends Collection<E> implements SparseArrayIF<E> {
 
     protected BTree<IndexedPair<E>> btree;
 
     public SparseArrayBTree() {
-
+        btree = new BTree();
     }
 
-    /*private Stack<Boolean> num2bin(int n) {
-		Stack<Boolean> salida = new Stack<Boolean>();
-		if ( n == 0 ) {
-			salida.push(false);
-		} else {
-			while ( n != 0 ) {
-				salida.push((n % 2) == 1);
-				n = n / 2;
-			}
-		}
-		return salida;
-	}*/
+    private Stack<Boolean> num2bin(int n) {
+        Stack<Boolean> salida = new Stack<Boolean>();
+        if (n == 0) {
+            salida.push(false);
+        } else {
+            while (n != 0) {
+                salida.push((n % 2) == 1);
+                n = n / 2;
+            }
+        }
+        return salida;
+    }
 
     @Override
     public void set(int pos, E elem) {
-        System.out.println("");
+        Stack<Boolean> posBin = this.num2bin(pos);
+        this.addNode(posBin, btree, pos, elem);
+    }
+
+    private void addNode(Stack<Boolean> b, BTreeIF<IndexedPair<E>> root, int pos, E elem) {
+        if (b.isEmpty()) {
+            if (root.getRoot() == null) {
+                this.size++;
+            }
+            IndexedPair nodo = new IndexedPair(pos, elem);
+            root.setRoot(nodo);
+            return;
+        }
+        boolean cmd = b.getTop();
+        b.pop();
+        if (cmd) {
+            if (root.getRightChild() == null) {
+                root.setRightChild(new BTree<IndexedPair<E>>());
+            }
+            this.addNode(b, root.getRightChild(), pos, elem);
+        } else {
+            if (root.getLeftChild() == null) {
+                root.setLeftChild(new BTree<IndexedPair<E>>());
+            }
+            this.addNode(b, root.getLeftChild(), pos, elem);
+        }
     }
 
     @Override
     public E get(int pos) {
-        return null;
+        return this.buscar(pos).getRoot().getValue();
     }
 
     @Override
     public void delete(int pos) {
+//        NodoBin<T> r = this.buscar(info);
+//        if(r==null)
+//            return (false);        
+//        boolean tnd = this.btree.getLeftChild()!=null?true:false;
+//        boolean tni = r.getIzq()!=null?true:false; 
+//        //Caso 1: No tiene hijos
+//        if (!tnd && !tni)
+//            return eliminarC1(r);
+//        //Caso 2: Tiene solo hijo derecho
+//        if ( tnd && !tni)
+//            return eliminarC2(r); 
+//        //Caso 3: Tiene solo hijo izquierdo
+//        if ( !tnd && tni )
+//            return eliminarC2(r); 
+//        //Caso 4: Tiene ambos hijos
+//        if ( tnd && tni )
+//            return eliminarC3(r); 
+//        return false;
+    }
+    
+//    private boolean eliminarC1(NodoBin<T> r){
+//        NodoBin<T> p = this.getPadre(r);
+//        if(p==null){
+//            if(this.getRaiz()!=r)
+//                return (false);
+//            this.setRaiz(null);
+//            return (true);
+//        }            
+//        NodoBin<T> hi = p.getIzq();
+//        NodoBin<T> hd = p.getDer();
+//        if(hi==r){
+//            this.getPadre(r).setIzq(null);
+//            return true;
+//        } 
+//        if (hd==r){
+//            this.getPadre(r).setDer(null);
+//            return true;
+//        } 
+//        return (false);
+//    }
+//
+//    private boolean eliminarC2(NodoBin<T> r){
+//        NodoBin<T> p = this.getPadre(r);
+//        NodoBin<T> ha = r.getIzq()!=null?r.getIzq():r.getDer(); 
+//        if(p==null){
+//            this.setRaiz(ha);
+//            return (true);
+//        }
+//        NodoBin<T> hi = p.getIzq();
+//        NodoBin<T> hd = p.getDer();
+//        if (hi==r){
+//            this.getPadre(r).setIzq(ha);
+//            r.setDer(null);
+//            r.setIzq(null); 
+//            return true;
+//        } 
+//        if (hd==r) {
+//            this.getPadre(r).setDer(ha);
+//            r.setDer(null);
+//            r.setIzq(null); 
+//            return true;
+//        } 
+//        return false;
+//    }
+//
+//    private boolean eliminarC3(NodoBin<T> r){
+//        NodoBin<T> masIzq = this.masIzquierda(r.getDer());
+//        if (masIzq!=null){            
+//            this.eliminar((T) masIzq.getInfo());
+//            r.setInfo(masIzq.getInfo());            
+//            return (true);
+//        }
+//        return (false);
+//
+//    }
+//
+//    private NodoBin<T> masIzquierda(NodoBin<T> r) {
+//        if (r.getIzq()!=null){
+//            return (masIzquierda(r.getIzq()));
+//        }
+//        return (r);
+//    }
+
+    public BTreeIF<IndexedPair<E>> buscar(int pos) {
+        Stack<Boolean> b = this.num2bin(pos);
+        return this.buscar(b, btree);
+    }
+
+    private BTreeIF<IndexedPair<E>> buscar(Stack<Boolean> b, BTreeIF<IndexedPair<E>> current) {
+        if (b.size() == 0) {
+            return current;
+        }
+        boolean cmd = b.getTop();
+        b.pop();
+        if (cmd) {
+            return this.buscar(b, current.getRightChild());
+        } else {
+            return this.buscar(b, current.getLeftChild());
+        }
     }
 
     @Override
     public IteratorIF<Integer> indexIterator() {
-        return null;
+        IteratorIF<IndexedPair<E>> elementos = this.btree.iterator(BTreeIF.IteratorModes.BREADTH);
+        Queue<Integer> q = new Queue<Integer>();
+        return this.getIndexIterator(elementos, q);
+    }
+
+    private IteratorIF<Integer> getIndexIterator(IteratorIF<IndexedPair<E>> elementos, Queue<Integer> q) {
+        if (elementos.hasNext()) {
+            IndexedPair e = elementos.getNext();
+            if (e != null) {
+                q.enqueue(e.getIndex());
+            }
+            this.getIndexIterator(elementos, q);
+        }
+        return q.iterator();
     }
 
     @Override
     public boolean contains(E e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        IteratorIF<E> iterator = this.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.getNext().equals(e)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
     public IteratorIF<E> iterator() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        IteratorIF<IndexedPair<E>> elementos = this.btree.iterator(BTreeIF.IteratorModes.BREADTH);
+        Queue<E> q = new Queue<E>();
+        return this.getElementsIterator(elementos, q);
+    }
+
+    private IteratorIF<E> getElementsIterator(IteratorIF<IndexedPair<E>> elementos, Queue<E> q) {
+        if (elementos.hasNext()) {
+            IndexedPair<E> e = elementos.getNext();
+            if (e != null) {
+                q.enqueue(e.getValue());
+            }
+            this.getElementsIterator(elementos, q);
+        }
+        return q.iterator();
     }
 }

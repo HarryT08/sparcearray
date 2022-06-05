@@ -1,7 +1,5 @@
 package es.uned.lsi.eped.DataStructures;
 
-import es.uned.lsi.eped.pract2021_2022.IndexedPair;
-
 public abstract class Sequence<E> extends Collection<E> implements SequenceIF<E> {
 
     /* Clase privada que implementa la estructura de nodos de la secuencia */
@@ -35,6 +33,7 @@ public abstract class Sequence<E> extends Collection<E> implements SequenceIF<E>
         public void setNext(NodeSequence n) {
             this.next = n;
         }
+
     }
 
     /* Clase privada que implementa un iterador para la secuencia */
@@ -59,6 +58,7 @@ public abstract class Sequence<E> extends Collection<E> implements SequenceIF<E>
         public void reset() {
             this.currentNode = firstNode;
         }
+
     }
 
     protected NodeSequence firstNode;
@@ -122,7 +122,9 @@ public abstract class Sequence<E> extends Collection<E> implements SequenceIF<E>
     public IteratorIF<E> iterator() {
         return new SequenceIterator();
     }
-    
+
+    /* Devuelve el nodo i-ésimo de la secuencia        *
+	 * @Pre: 1 <= i <= size()                          */
     protected NodeSequence getNode(int i) {
         NodeSequence node = this.firstNode;
         for (int aux = 1; aux < i; aux++) {

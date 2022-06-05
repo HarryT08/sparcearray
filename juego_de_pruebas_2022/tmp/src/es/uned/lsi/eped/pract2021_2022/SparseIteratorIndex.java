@@ -6,11 +6,11 @@ import es.uned.lsi.eped.DataStructures.IteratorIF;
  *
  * @author Admin
  */
-public class IteratorIndex implements IteratorIF<Integer> {
+public class SparseIteratorIndex implements IteratorIF<Integer> {
 
     private NodeIndexedPair cabeza;
 
-    public IteratorIndex(NodeIndexedPair cabeza) {
+    public SparseIteratorIndex(NodeIndexedPair cabeza) {
         this.cabeza = cabeza;
     }
 

@@ -5,8 +5,7 @@ import es.uned.lsi.eped.DataStructures.IteratorIF;
 
 public class SparseArraySequence<E> extends Collection<E> implements SparseArrayIF<E> {
 
-
-    private class SparseArrayIterator implements IteratorIF<String> {
+    private class SparseArrayIterator implements IteratorIF<E> {
 
         private NodeIndexedPair currentNode;
 
@@ -15,8 +14,8 @@ public class SparseArraySequence<E> extends Collection<E> implements SparseArray
         }
 
         @Override
-        public String getNext() {
-            String elem = (String) this.currentNode.getValue().getValue();
+        public E getNext() {
+            E elem = (E) this.currentNode.getValue().getValue();
             this.currentNode = this.currentNode.getNext();
             return elem;
         }
@@ -31,19 +30,19 @@ public class SparseArraySequence<E> extends Collection<E> implements SparseArray
             this.currentNode = sequence;
         }
     }
-    
+
     @Override
     public IteratorIF<E> iterator() {
         return (IteratorIF<E>) new SparseArrayIterator();
     }
-    
+
     @Override
     public IteratorIF<Integer> indexIterator() {
         return new SparseIteratorIndex(this.sequence);
     }
-    
+
     protected NodeIndexedPair sequence;
-    
+
     public SparseArraySequence() {
         sequence = null;
     }
@@ -145,7 +144,7 @@ public class SparseArraySequence<E> extends Collection<E> implements SparseArray
         }
         return null;
     }
-    
+
     @Override
     public void clear() {
         super.clear();
