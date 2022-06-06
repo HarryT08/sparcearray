@@ -93,20 +93,20 @@ REM ===
 REM ===========================================
 REM === Comprobacion basica eliminacion nodos ===
 REM ===========================================
-echo Prueba basica eliminacion nodos
-REM === DESCOMENTAR LA SIGUIENTE LINEA SI SE QUIERE IMPRIMIR LA ORDEN === 
-REM echo %JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar;juego_de_pruebas_2022/lib/BasicTest.jar" es.uned.lsi.eped.pract2021_2022.MainBateriaPruebas
+REM echo Prueba basica eliminacion nodos
+REM REM === DESCOMENTAR LA SIGUIENTE LINEA SI SE QUIERE IMPRIMIR LA ORDEN === 
+REM REM echo %JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar;juego_de_pruebas_2022/lib/BasicTest.jar" es.uned.lsi.eped.pract2021_2022.MainBateriaPruebas
 
-%JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar;juego_de_pruebas_2022/lib/BasicTest.jar" es.uned.lsi.eped.pract2021_2022.MainBateriaPruebas
+REM %JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar;juego_de_pruebas_2022/lib/BasicTest.jar" es.uned.lsi.eped.pract2021_2022.MainBateriaPruebas
 
-if errorlevel 1 (
-	echo Ejecucion con errores
-	pause
-	exit /B 1
-)
-echo. 
-echo.
-pause
+REM if errorlevel 1 (
+	REM echo Ejecucion con errores
+	REM pause
+	REM exit /B 1
+REM )
+REM echo. 
+REM echo.
+REM pause
 
 
 
@@ -159,34 +159,34 @@ echo Ejecutando el programa con arbol binario de busqueda basica
 REM === DESCOMENTAR LA SIGUIENTE LINEA SI SE QUIERE IMPRIMIR LA ORDEN === 
 REM echo %JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar" "%MAIN%" BTREE "juego_de_pruebas_2022/pruebas/JuegoPruebas_Estudiantes_18_Basic_2.dat" "juego_de_pruebas_2022/salida/Salida_Estudiantes_18_Basic_2_BTREE.dat"
 
-%JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar" "%MAIN%" BTREE "juego_de_pruebas_2022/pruebas/JuegoPruebas_Estudiantes_18_Basic_2.dat" "juego_de_pruebas_2022/salida/Salida_Estudiantes_18_Basic_2_BTREE.dat"
+REM %JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar" "%MAIN%" BTREE "juego_de_pruebas_2022/pruebas/JuegoPruebas_Estudiantes_18_Basic_2.dat" "juego_de_pruebas_2022/salida/Salida_Estudiantes_18_Basic_2_BTREE.dat"
 
-if errorlevel 1 (
-	echo Ejecucion con errores
-	pause
-	exit /B 1
-)
+REM if errorlevel 1 (
+	REM echo Ejecucion con errores
+	REM pause
+	REM exit /B 1
+REM )
 
-echo Ejecucion sin errores
-echo. 
-echo.
-pause
+REM echo Ejecucion sin errores
+REM echo. 
+REM echo.
+REM pause
 
 REM === Comprobacion Estudiantes Basica 2 ===
 echo Comprobando bateria de pruebas para arbol binario de busqueda basica
 REM === DESCOMENTAR LA SIGUIENTE LINEA SI SE QUIERE IMPRIMIR LA ORDEN === 
 REM echo %JAVA_HOME_JDK%"\bin\java" -jar "juego_de_pruebas_2022/lib/Comparator.jar" "juego_de_pruebas_2022/salida/Salida_Estudiantes_18_Basic_2_BTREE.dat" "juego_de_pruebas_2022/salida/Salida_18_Basic_2.dat" "erroresB2.txt"
 
-%JAVA_HOME_JDK%"\bin\java" -jar "juego_de_pruebas_2022/lib/Comparator.jar" "juego_de_pruebas_2022/salida/Salida_Estudiantes_18_Basic_2_BTREE.dat" "juego_de_pruebas_2022/salida/Salida_18_Basic_2.dat" "erroresB2.txt"
+REM %JAVA_HOME_JDK%"\bin\java" -jar "juego_de_pruebas_2022/lib/Comparator.jar" "juego_de_pruebas_2022/salida/Salida_Estudiantes_18_Basic_2_BTREE.dat" "juego_de_pruebas_2022/salida/Salida_18_Basic_2.dat" "erroresB2.txt"
 
-if errorlevel 1 (
-	echo Ejecucion con errores
-	pause
-	exit /B 1
-)
-echo. 
-echo.
-pause
+REM if errorlevel 1 (
+	REM echo Ejecucion con errores
+	REM pause
+	REM exit /B 1
+REM )
+REM echo. 
+REM echo.
+REM pause
 
 REM =========================================
 
@@ -240,34 +240,34 @@ echo Ejecutando el programa con arbol binario de busqueda (pocas instrucciones y
 REM === DESCOMENTAR LA SIGUIENTE LINEA SI SE QUIERE IMPRIMIR LA ORDEN === 
 REM echo %JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar" "%MAIN%" BTREE "juego_de_pruebas_2022/pruebas/JuegoPruebas_Estudiantes_1000_100.dat" "juego_de_pruebas_2022/salida/Salida_Estudiantes_1000_100_BTREE.dat"
 
-%JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar" "%MAIN%" BTREE "juego_de_pruebas_2022/pruebas/JuegoPruebas_Estudiantes_1000_100.dat" "juego_de_pruebas_2022/salida/Salida_Estudiantes_1000_100_BTREE.dat"
+REM %JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar" "%MAIN%" BTREE "juego_de_pruebas_2022/pruebas/JuegoPruebas_Estudiantes_1000_100.dat" "juego_de_pruebas_2022/salida/Salida_Estudiantes_1000_100_BTREE.dat"
 
-if errorlevel 1 (
-	echo Ejecucion con errores
-	pause
-	exit /B 1
-)
+REM if errorlevel 1 (
+	REM echo Ejecucion con errores
+	REM pause
+	REM exit /B 1
+REM )
 
-echo Ejecucion sin errores
-echo. 
-echo.
-pause
+REM echo Ejecucion sin errores
+REM echo. 
+REM echo.
+REM pause
 
 REM === Comprobacion Estudiantes PP ===
 echo Comprobando bateria de pruebas para arbol binario de busqueda (pocas instrucciones y pocos indices)
 REM === DESCOMENTAR LA SIGUIENTE LINEA SI SE QUIERE IMPRIMIR LA ORDEN === 
 REM echo %JAVA_HOME_JDK%"\bin\java" -jar "juego_de_pruebas_2022/lib/Comparator.jar" "juego_de_pruebas_2022/salida/Salida_Estudiantes_1000_100_BTREE.dat" "juego_de_pruebas_2022/salida/Salida_1000_100.dat" "erroresPP2.txt"
 
-%JAVA_HOME_JDK%"\bin\java" -jar "juego_de_pruebas_2022/lib/Comparator.jar" "juego_de_pruebas_2022/salida/Salida_Estudiantes_1000_100_BTREE.dat" "juego_de_pruebas_2022/salida/Salida_1000_100.dat" "erroresPP2.txt"
+REM %JAVA_HOME_JDK%"\bin\java" -jar "juego_de_pruebas_2022/lib/Comparator.jar" "juego_de_pruebas_2022/salida/Salida_Estudiantes_1000_100_BTREE.dat" "juego_de_pruebas_2022/salida/Salida_1000_100.dat" "erroresPP2.txt"
 
-if errorlevel 1 (
-	echo Ejecucion con errores
-	pause
-	exit /B 1
-)
-echo. 
-echo.
-pause
+REM if errorlevel 1 (
+	REM echo Ejecucion con errores
+	REM pause
+	REM exit /B 1
+REM )
+REM echo. 
+REM echo.
+REM pause
 
 
 REM ==============================================================================
@@ -319,34 +319,34 @@ echo Ejecutando el programa con arbol binario de busqueda (muchas instrucciones 
 REM === DESCOMENTAR LA SIGUIENTE LINEA SI SE QUIERE IMPRIMIR LA ORDEN === 
 REM echo %JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar" "%MAIN%" BTREE "juego_de_pruebas_2022/pruebas/JuegoPruebas_Estudiantes_15000_100.dat" "juego_de_pruebas_2022/salida/Salida_Estudiantes_15000_100_BTREE.dat"
 
-%JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar" "%MAIN%" BTREE "juego_de_pruebas_2022/pruebas/JuegoPruebas_Estudiantes_15000_100.dat" "juego_de_pruebas_2022/salida/Salida_Estudiantes_15000_100_BTREE.dat"
+REM %JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar" "%MAIN%" BTREE "juego_de_pruebas_2022/pruebas/JuegoPruebas_Estudiantes_15000_100.dat" "juego_de_pruebas_2022/salida/Salida_Estudiantes_15000_100_BTREE.dat"
 
-if errorlevel 1 (
-	echo Ejecucion con errores
-	pause
-	exit /B 1
-)
+REM if errorlevel 1 (
+	REM echo Ejecucion con errores
+	REM pause
+	REM exit /B 1
+REM )
 
-echo Ejecucion sin errores
-echo. 
-echo.
-pause
+REM echo Ejecucion sin errores
+REM echo. 
+REM echo.
+REM pause
 
 REM === Comprobacion Estudiantes MP ===
 echo Comprobando bateria de pruebas para arbol binario de busqueda (muchas instrucciones y pocos indices)
 REM === DESCOMENTAR LA SIGUIENTE LINEA SI SE QUIERE IMPRIMIR LA ORDEN === 
 REM echo %JAVA_HOME_JDK%"\bin\java" -jar "juego_de_pruebas_2022/lib/Comparator.jar" "juego_de_pruebas_2022/salida/Salida_Estudiantes_15000_100_BTREE.dat" "juego_de_pruebas_2022/salida/Salida_15000_100.dat" "erroresMP2.txt"
 
-%JAVA_HOME_JDK%"\bin\java" -jar "juego_de_pruebas_2022/lib/Comparator.jar" "juego_de_pruebas_2022/salida/Salida_Estudiantes_15000_100_BTREE.dat" "juego_de_pruebas_2022/salida/Salida_15000_100.dat" "erroresMP2.txt"
+REM %JAVA_HOME_JDK%"\bin\java" -jar "juego_de_pruebas_2022/lib/Comparator.jar" "juego_de_pruebas_2022/salida/Salida_Estudiantes_15000_100_BTREE.dat" "juego_de_pruebas_2022/salida/Salida_15000_100.dat" "erroresMP2.txt"
 
-if errorlevel 1 (
-	echo Ejecucion con errores
-	pause
-	exit /B 1
-)
-echo. 
-echo.
-pause
+REM if errorlevel 1 (
+	REM echo Ejecucion con errores
+	REM pause
+	REM exit /B 1
+REM )
+REM echo. 
+REM echo.
+REM pause
 
 REM =========================================
 
@@ -400,34 +400,34 @@ echo Ejecutando el programa con arbol binario de busqueda (muchas instrucciones 
 REM === DESCOMENTAR LA SIGUIENTE LINEA SI SE QUIERE IMPRIMIR LA ORDEN === 
 REM echo %JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar" "%MAIN%" BTREE "juego_de_pruebas_2022/pruebas/JuegoPruebas_Estudiantes_30000_100000.dat" "juego_de_pruebas_2022/salida/Salida_Estudiantes_30000_100000_BTREE.dat"
 
-%JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar" "%MAIN%" BTREE "juego_de_pruebas_2022/pruebas/JuegoPruebas_Estudiantes_30000_100000.dat" "juego_de_pruebas_2022/salida/Salida_Estudiantes_30000_100000_BTREE.dat"
+REM %JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2022/lib/TAD_modified.jar" "%MAIN%" BTREE "juego_de_pruebas_2022/pruebas/JuegoPruebas_Estudiantes_30000_100000.dat" "juego_de_pruebas_2022/salida/Salida_Estudiantes_30000_100000_BTREE.dat"
 
-if errorlevel 1 (
-	echo Ejecucion con errores
-	pause
-	exit /B 1
-)
+REM if errorlevel 1 (
+	REM echo Ejecucion con errores
+	REM pause
+	REM exit /B 1
+REM )
 
-echo Ejecucion sin errores
-echo. 
-echo.
-pause
+REM echo Ejecucion sin errores
+REM echo. 
+REM echo.
+REM pause
 
 REM === Comprobacion Estudiantes MM ===
 echo Comprobando bateria de pruebas para arbol binario de busqueda (muchas instrucciones y muchos indices)
 REM === DESCOMENTAR LA SIGUIENTE LINEA SI SE QUIERE IMPRIMIR LA ORDEN === 
 REM echo %JAVA_HOME_JDK%"\bin\java" -jar "juego_de_pruebas_2022/lib/Comparator.jar" "juego_de_pruebas_2022/salida/Salida_Estudiantes_30000_100000_BTREE.dat" "juego_de_pruebas_2022/salida/Salida_30000_100000.dat" "erroresMM2.txt"
 
-%JAVA_HOME_JDK%"\bin\java" -jar "juego_de_pruebas_2022/lib/Comparator.jar" "juego_de_pruebas_2022/salida/Salida_Estudiantes_30000_100000_BTREE.dat" "juego_de_pruebas_2022/salida/Salida_30000_100000.dat" "erroresMM2.txt"
+REM %JAVA_HOME_JDK%"\bin\java" -jar "juego_de_pruebas_2022/lib/Comparator.jar" "juego_de_pruebas_2022/salida/Salida_Estudiantes_30000_100000_BTREE.dat" "juego_de_pruebas_2022/salida/Salida_30000_100000.dat" "erroresMM2.txt"
 
-if errorlevel 1 (
-	echo Ejecucion con errores
-	pause
-	exit /B 1
-)
-echo. 
-echo.
-pause
+REM if errorlevel 1 (
+	REM echo Ejecucion con errores
+	REM pause
+	REM exit /B 1
+REM )
+REM echo. 
+REM echo.
+REM pause
 
 REM =========================================
 

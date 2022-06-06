@@ -4,7 +4,11 @@ import es.uned.lsi.eped.DataStructures.Collection;
 import es.uned.lsi.eped.DataStructures.IteratorIF;
 
 public class SparseArraySequence<E> extends Collection<E> implements SparseArrayIF<E> {
-
+    
+    /**
+     * Iterador del arreglo sparseArray
+     * Permite iterar entre los elementos de la clase SparseArraySequence
+     */
     private class SparseArrayIterator implements IteratorIF<E> {
 
         private NodeIndexedPair currentNode;
@@ -12,61 +16,106 @@ public class SparseArraySequence<E> extends Collection<E> implements SparseArray
         SparseArrayIterator() {
             this.currentNode = sequence;
         }
-
+        
+        /**
+         * Devuelve el objeto actual y avanza una posición
+         * @return E valor del indexedpair
+         */
         @Override
         public E getNext() {
             E elem = (E) this.currentNode.getValue().getValue();
             this.currentNode = this.currentNode.getNext();
             return elem;
         }
-
+        
+        /**
+         * Verifica si el elemento actual es un elemento
+         * @return true si hay un elemento false si el elemento es nulo
+         */
         @Override
         public boolean hasNext() {
             return this.currentNode != null;
         }
-
+        
+        /**
+         * Devuelve al inicio del iterador al primer elemento del array
+         */
         @Override
         public void reset() {
             this.currentNode = sequence;
         }
     }
-
+    
+    /**
+     * Devuelve un iterador con los valores de los elementos del SparseArraySequence
+     * return IteratorIF<E>
+     */
     @Override
     public IteratorIF<E> iterator() {
         return (IteratorIF<E>) new SparseArrayIterator();
     }
-
+    
+    /**
+     * Devuelve un iterador con los indices de los elementos del SparseArraySequence
+     * return IteratorIF<Integer>
+     */
     @Override
     public IteratorIF<Integer> indexIterator() {
         return new SparseIteratorIndex(this.sequence);
     }
-
+    
+    /**
+     * Nodo cabeza del array
+     * Cuando se crea el arreglo es null
+     */
     protected NodeIndexedPair sequence;
-
+    
+    /**
+     * Constructor por defecto
+     */
     public SparseArraySequence() {
         sequence = null;
     }
-
+    
+    /**
+     * Método set
+     * Este método permite agregar un nuevo elemento al arreglo indexado
+     * @param pos indice donde queremos insertar
+     * @param elem Información que queremos insertar.
+     */
     @Override
     public void set(int pos, E elem) {
         this.insertarParesOrdenados(pos, elem);
     }
 
+    /**
+     * Método agregar inicio
+     * Permite agregar un nuevo elemento en la cabeza del array
+     * @param element IndexedPair con la información del índice o posición y la información insertada.
+     */
     private void agregarInicio(IndexedPair element) {
         NodeIndexedPair nuevo = new NodeIndexedPair(element);
         nuevo.setNext(this.sequence);
         this.sequence = nuevo;
         this.size++;
     }
-
+    
+    /**
+     * Método insertarParesOrdenados
+     * Permite agregar un nuevo elemento al array de manera ordenada (Por la posición que llega por parametro)
+     * @param pos Posición del elemento.
+     * @param elem Información del elemento.
+     */
     private void insertarParesOrdenados(int pos, E elem) {
+        //Tamaño es 0, lo insertamos al inicio
         if (this.size == 0) {
             IndexedPair toInsert = new IndexedPair(pos, elem);
             this.agregarInicio(toInsert);
             return;
         }
-
+        //Verificamos si existe un elemento en esa posición
         NodeIndexedPair elemento = this.getPair(pos);
+        //Si no hay, lo agregamos donde corresponda según la posición
         if (elemento == null) {
             IndexedPair aux = new IndexedPair(pos, elem); // ELEMENTO A INSERTAR
             NodeIndexedPair it = this.sequence;
@@ -86,19 +135,31 @@ public class SparseArraySequence<E> extends Collection<E> implements SparseArray
                 prev.getNext().setNext(it);
                 this.size++;
             }
-        } else {
+        } //Si hay un elemento en esa posición, modificamos el valor.
+        else {
             elemento.getValue().setValue(elem);
         }
     }
-
+    
+    /**
+     * Método get
+     * 
+     * @param pos Posición del elemento que queremos buscar.
+     * @return E Información del indexedPair si la encuentra, de lo contrario retorna null.
+     */
     @Override
     public E get(int pos) {
-        for (NodeIndexedPair x = this.sequence; x != null; x = x.getNext()) {
-            if (x.getValue().getIndex() == pos) {
-                return (E) x.getValue().getValue().toString();
-            }
+        NodeIndexedPair elemento = this.getPair(pos);
+        if(elemento == null){
+            return null;
+        }else{
+            return (E) elemento.getValue().getValue();
         }
-        return null;
+//        for (NodeIndexedPair x = this.sequence; x != null; x = x.getNext()) {
+//            if (x.getValue().getIndex() == pos) {
+//                return (E) x.getValue().getValue().toString();
+//            }
+//        }
     }
 
     @Override
