@@ -64,90 +64,8 @@ public class SparseArrayBTree<E> extends Collection<E> implements SparseArrayIF<
         return this.buscar(pos).getRoot().getValue();
     }
 
-    @Override
-    public void delete(int pos) {
-//        NodoBin<T> r = this.buscar(info);
-//        if(r==null)
-//            return (false);        
-//        boolean tnd = this.btree.getLeftChild()!=null?true:false;
-//        boolean tni = r.getIzq()!=null?true:false; 
-//        //Caso 1: No tiene hijos
-//        if (!tnd && !tni)
-//            return eliminarC1(r);
-//        //Caso 2: Tiene solo hijo derecho
-//        if ( tnd && !tni)
-//            return eliminarC2(r); 
-//        //Caso 3: Tiene solo hijo izquierdo
-//        if ( !tnd && tni )
-//            return eliminarC2(r); 
-//        //Caso 4: Tiene ambos hijos
-//        if ( tnd && tni )
-//            return eliminarC3(r); 
-//        return false;
-    }
-    
-//    private boolean eliminarC1(NodoBin<T> r){
-//        NodoBin<T> p = this.getPadre(r);
-//        if(p==null){
-//            if(this.getRaiz()!=r)
-//                return (false);
-//            this.setRaiz(null);
-//            return (true);
-//        }            
-//        NodoBin<T> hi = p.getIzq();
-//        NodoBin<T> hd = p.getDer();
-//        if(hi==r){
-//            this.getPadre(r).setIzq(null);
-//            return true;
-//        } 
-//        if (hd==r){
-//            this.getPadre(r).setDer(null);
-//            return true;
-//        } 
-//        return (false);
-//    }
-//
-//    private boolean eliminarC2(NodoBin<T> r){
-//        NodoBin<T> p = this.getPadre(r);
-//        NodoBin<T> ha = r.getIzq()!=null?r.getIzq():r.getDer(); 
-//        if(p==null){
-//            this.setRaiz(ha);
-//            return (true);
-//        }
-//        NodoBin<T> hi = p.getIzq();
-//        NodoBin<T> hd = p.getDer();
-//        if (hi==r){
-//            this.getPadre(r).setIzq(ha);
-//            r.setDer(null);
-//            r.setIzq(null); 
-//            return true;
-//        } 
-//        if (hd==r) {
-//            this.getPadre(r).setDer(ha);
-//            r.setDer(null);
-//            r.setIzq(null); 
-//            return true;
-//        } 
-//        return false;
-//    }
-//
-//    private boolean eliminarC3(NodoBin<T> r){
-//        NodoBin<T> masIzq = this.masIzquierda(r.getDer());
-//        if (masIzq!=null){            
-//            this.eliminar((T) masIzq.getInfo());
-//            r.setInfo(masIzq.getInfo());            
-//            return (true);
-//        }
-//        return (false);
-//
-//    }
-//
-//    private NodoBin<T> masIzquierda(NodoBin<T> r) {
-//        if (r.getIzq()!=null){
-//            return (masIzquierda(r.getIzq()));
-//        }
-//        return (r);
-//    }
+ 
+
 
     public BTreeIF<IndexedPair<E>> buscar(int pos) {
         Stack<Boolean> b = this.num2bin(pos);
@@ -166,7 +84,33 @@ public class SparseArrayBTree<E> extends Collection<E> implements SparseArrayIF<
             return this.buscar(b, current.getLeftChild());
         }
     }
-
+    
+    @Override
+    public void delete(int pos) {
+        BTreeIF<IndexedPair<E>> r = this.buscar(pos);
+        if(r != null){
+            System.out.println("Lo encontre");
+            delete(num2bin(pos) , btree);
+        }
+    }
+    
+    private void delete(Stack<Boolean> b, BTreeIF<IndexedPair<E>> current){
+        if(b.size() == 0){
+            int nChild=current.getNumChildren();
+            if(current.getRoot().getValue() != null){
+                current.setRoot(null);
+            }
+            if(nChild == 0) current.setRoot(null);
+            return ;
+        }  
+        boolean cmd = b.getTop();
+        b.pop();
+        if (cmd) {
+            this.delete(b, current.getRightChild());
+        } else {
+            this.delete(b, current.getLeftChild());
+        }
+    }
     @Override
     public IteratorIF<Integer> indexIterator() {
         IteratorIF<IndexedPair<E>> elementos = this.btree.iterator(BTreeIF.IteratorModes.BREADTH);
