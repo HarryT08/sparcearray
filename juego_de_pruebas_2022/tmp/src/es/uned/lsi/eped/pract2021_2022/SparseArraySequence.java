@@ -155,24 +155,27 @@ public class SparseArraySequence<E> extends Collection<E> implements SparseArray
         }else{
             return (E) elemento.getValue().getValue();
         }
-//        for (NodeIndexedPair x = this.sequence; x != null; x = x.getNext()) {
-//            if (x.getValue().getIndex() == pos) {
-//                return (E) x.getValue().getValue().toString();
-//            }
-//        }
     }
-
+    
+    /**
+     * Método delete
+     * Permite eliminar un elemento del arreglo dada una posición
+     * @param pos Posición del elemento a eliminar.
+     */
     @Override
     public void delete(int pos) {
+        //Si el arreglo es vacío, no elimina
         if (this.size == 0) {
             return;
         }
+        //Si el elemento esta en la primera posición, se mueve el puntero (cabeza)
         if (this.sequence.getValue().getIndex() == pos) {
             this.sequence = this.sequence.getNext();
             this.size--;
             return;
         }
-
+        
+        //De lo contrario busca el elemento en el arreglo
         NodeIndexedPair actual = this.sequence;
         NodeIndexedPair prev = actual;
         while (actual != null) {
@@ -186,7 +189,13 @@ public class SparseArraySequence<E> extends Collection<E> implements SparseArray
             actual = actual.getNext();
         }
     }
-
+    
+    /**
+     * Método contains
+     * Recorre el array verificando si la información pasada por parametro coincide con la de algún elemento
+     * @param e Información del elemento a buscar
+     * @return true si la información esta en el arreglo, de lo contrario false
+     */
     @Override
     public boolean contains(E e) {
         for (NodeIndexedPair x = this.sequence; x != null; x = x.getNext()) {
@@ -196,7 +205,13 @@ public class SparseArraySequence<E> extends Collection<E> implements SparseArray
         }
         return false;
     }
-
+    
+    /**
+     * Método getPair
+     * Recorre el arreglo en busca del elemento en la posición pasada
+     * @param pos Posición del arreglo que intentamos buscar
+     * @return NodeIndexedPair devuelve un par indexado si se encuentra la posición, de lo contrario retorna null
+     */
     private NodeIndexedPair getPair(int pos) {
         for (NodeIndexedPair x = this.sequence; x != null; x = x.getNext()) {
             if (x.getValue().getIndex() == pos) {
@@ -205,7 +220,11 @@ public class SparseArraySequence<E> extends Collection<E> implements SparseArray
         }
         return null;
     }
-
+    
+    /**
+     * Método clear
+     * Permite vaciar el arreglo y el size será 0
+     */
     @Override
     public void clear() {
         super.clear();

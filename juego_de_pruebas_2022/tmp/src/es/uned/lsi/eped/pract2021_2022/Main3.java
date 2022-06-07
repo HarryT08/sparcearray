@@ -25,6 +25,20 @@ public class Main3 {
         while(iterator.hasNext()){
             System.out.println(iterator.getNext());
         }
+        b.delete(3);
+        b.delete(6);
+        System.out.println("luego de eliminar-----------------------------------------------\n");
+        iterator = b.iterator();
+        while(iterator.hasNext()){
+            System.out.println(iterator.getNext());
+        }
+        
+        System.out.println("añadimos---------------------------\n");
+        b.set(3, "probando");
+        iterator = b.iterator();
+        while(iterator.hasNext()){
+            System.out.println(iterator.getNext());
+        }
         
     }
 }

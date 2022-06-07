@@ -3,8 +3,6 @@ La linea 6 es diferente en ambos ficheros:
 La linea 7 es diferente en ambos ficheros: 
 	El fichero salida tiene el valor: "isempty: false", y el fichero esperado tiene: "isempty: true".
 La linea 14 es diferente en ambos ficheros: 
-	El fichero salida tiene el valor: "iterator: 4c500e7f-9260-4618-84e1-182fc40f1644 dde4a4c7-b5c0-4d64-a19a-3638faad3d6a 6e6e4333-62e0-43bd-a84b-b24a6b8a1f3a 53ddc5d1-55bf-4d3e-a922-15981135258d 60ad38ed-c49f-4720-909e-688d17658864", y el fichero esperado tiene: "iterator: ".
+	El fichero salida tiene el valor: "iterator: 4c500e7f-9260-4618-84e1-182fc40f1644 53ddc5d1-55bf-4d3e-a922-15981135258d 60ad38ed-c49f-4720-909e-688d17658864", y el fichero esperado tiene: "iterator: ".
 La linea 15 es diferente en ambos ficheros: 
-	El fichero salida tiene el valor: "indexiterator: 49 50 84 85 93", y el fichero esperado tiene: "indexiterator: ".
-La linea 18 es diferente en ambos ficheros: 
-	El fichero salida tiene el valor: "contains a4072a1b-a2cf-49bf-b995-9c5fc7deb3e2: true", y el fichero esperado tiene: "contains a4072a1b-a2cf-49bf-b995-9c5fc7deb3e2: false".
+	El fichero salida tiene el valor: "indexiterator: 49 85 93", y el fichero esperado tiene: "indexiterator: ".

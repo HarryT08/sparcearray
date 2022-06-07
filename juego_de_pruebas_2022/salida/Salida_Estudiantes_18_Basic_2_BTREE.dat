@@ -11,8 +11,8 @@ set 85 53ddc5d1-55bf-4d3e-a922-15981135258d
 clear
 size: 0
 isempty: true
-iterator: 4c500e7f-9260-4618-84e1-182fc40f1644 dde4a4c7-b5c0-4d64-a19a-3638faad3d6a 6e6e4333-62e0-43bd-a84b-b24a6b8a1f3a 53ddc5d1-55bf-4d3e-a922-15981135258d 60ad38ed-c49f-4720-909e-688d17658864
-indexiterator: 49 50 84 85 93
+iterator: 4c500e7f-9260-4618-84e1-182fc40f1644 53ddc5d1-55bf-4d3e-a922-15981135258d 60ad38ed-c49f-4720-909e-688d17658864
+indexiterator: 49 85 93
 set 83 a4072a1b-a2cf-49bf-b995-9c5fc7deb3e2
 delete 83
-contains a4072a1b-a2cf-49bf-b995-9c5fc7deb3e2: true
+contains a4072a1b-a2cf-49bf-b995-9c5fc7deb3e2: false

@@ -1,7 +1,7 @@
 package es.uned.lsi.eped.pract2021_2022;
 
 /**
- * Clase que modela nodos para la clase SparseArray
+ * Clase que modela los nodos para la clase SparseArray
  * Parametro value que guarda la información del nodo
  * Parametro next, que apunta al siguiente elemento
  */
