@@ -88,8 +88,8 @@ public class SparseArrayBTree<E> extends Collection<E> implements SparseArrayIF<
     public void delete(int pos) {
         BTreeIF<IndexedPair<E>> r = this.buscar(pos);
         if(r != null){
-            System.out.println("Lo encontre");
             delete(num2bin(pos) , btree);
+            this.size--;
         }
     }
     
