@@ -18,15 +18,15 @@ public class Main3 {
         b.set(8, "Hola");        
         b.set(5, "Ignite");
         b.set(3, "Probando");
-        b.set(9, "Alferez");
         b.set(7, "Putos");
-        b.set(25, "Oscar");
+        System.out.println("Tamaño " + b.btree.size());
         IteratorIF iterator = b.iterator();
         while(iterator.hasNext()){
             System.out.println(iterator.getNext());
         }
-        b.delete(3);
-        b.delete(6);
+        b.delete(8);
+        
+        System.out.println("Tamaño " + b.btree.size());
         System.out.println("luego de eliminar-----------------------------------------------\n");
         iterator = b.iterator();
         while(iterator.hasNext()){
@@ -35,6 +35,7 @@ public class Main3 {
         
         System.out.println("añadimos---------------------------\n");
         b.set(3, "probando");
+        System.out.println("Tamaño " + b.btree.size());
         iterator = b.iterator();
         while(iterator.hasNext()){
             System.out.println(iterator.getNext());

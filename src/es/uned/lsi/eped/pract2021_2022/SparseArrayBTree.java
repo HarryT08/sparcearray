@@ -89,25 +89,24 @@ public class SparseArrayBTree<E> extends Collection<E> implements SparseArrayIF<
         BTreeIF<IndexedPair<E>> r = this.buscar(pos);
         if(r != null){
             delete(num2bin(pos) , btree);
-            this.size--;
         }
     }
     
     private void delete(Stack<Boolean> b, BTreeIF<IndexedPair<E>> current){
-        if(b.size() == 0){
-            int nChild=current.getNumChildren();
-            if(current.getRoot().getValue() != null){
-                current.setRoot(null);
+        if(b.size() > 0){
+            boolean cmd = b.getTop();
+            b.pop();
+            if (cmd) {
+                this.delete(b, current.getRightChild());
             }
-            if(nChild == 0) current.setRoot(null);
-            return ;
-        }  
-        boolean cmd = b.getTop();
-        b.pop();
-        if (cmd) {
-            this.delete(b, current.getRightChild());
-        } else {
-            this.delete(b, current.getLeftChild());
+            else {
+                this.delete(b, current.getLeftChild());
+            }
+        }
+        //aqui elimino
+        if(current.getNumChildren() == 0){
+            current = null;
+            this.size--;
         }
     }
     @Override
