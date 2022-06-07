@@ -6,7 +6,6 @@ import es.uned.lsi.eped.DataStructures.Collection;
 import es.uned.lsi.eped.DataStructures.IteratorIF;
 import es.uned.lsi.eped.DataStructures.Queue;
 import es.uned.lsi.eped.DataStructures.Stack;
-import java.util.Collections;
 
 public class SparseArrayBTree<E> extends Collection<E> implements SparseArrayIF<E> {
 
@@ -89,8 +88,8 @@ public class SparseArrayBTree<E> extends Collection<E> implements SparseArrayIF<
     public void delete(int pos) {
         BTreeIF<IndexedPair<E>> r = this.buscar(pos);
         if(r != null){
-            System.out.println("Lo encontre");
             delete(num2bin(pos) , btree);
+            this.size--;
         }
     }
     
