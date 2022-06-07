@@ -6,97 +6,6 @@ import es.uned.lsi.eped.DataStructures.IteratorIF;
 public class SparseArraySequence<E> extends Collection<E> implements SparseArrayIF<E> {
 
     /**
-     * Iterador del arreglo sparseArray Permite iterar entre los elementos de la
-     * clase SparseArraySequence
-     */
-    private class SparseArrayIterator implements IteratorIF<E> {
-
-        private NodeIndexedPair currentNode;
-
-        SparseArrayIterator() {
-            this.currentNode = sequence;
-        }
-
-        /**
-         * Devuelve el objeto actual y avanza una posición
-         *
-         * @return E valor del indexedpair
-         */
-        @Override
-        public E getNext() {
-            E elem = (E) this.currentNode.getValue().getValue();
-            this.currentNode = this.currentNode.getNext();
-            return elem;
-        }
-
-        /**
-         * Verifica si el elemento actual es un elemento
-         *
-         * @return true si hay un elemento false si el elemento es nulo
-         */
-        @Override
-        public boolean hasNext() {
-            return this.currentNode != null;
-        }
-
-        /**
-         * Devuelve al inicio del iterador al primer elemento del array
-         */
-        @Override
-        public void reset() {
-            this.currentNode = sequence;
-        }
-    }
-
-    /**
-     * Iterador de los indices del SparceArraySequence
-     */
-    private class SparseIteratorIndex implements IteratorIF<Integer> {
-
-        private NodeIndexedPair cabeza;
-
-        SparseIteratorIndex(NodeIndexedPair cabeza) {
-            this.cabeza = cabeza;
-        }
-
-        @Override
-        public Integer getNext() {
-            Integer elem = this.cabeza.getValue().getIndex();
-            this.cabeza = this.cabeza.getNext();
-            return elem;
-        }
-
-        @Override
-        public boolean hasNext() {
-            return cabeza != null;
-        }
-
-        @Override
-        public void reset() {
-            this.cabeza = null;
-        }
-
-    }
-
-    /**
-     * Devuelve un iterador con los valores de los elementos del
-     * SparseArraySequence return IteratorIF<E>
-     */
-    @Override
-    public IteratorIF<E> iterator() {
-        return (IteratorIF<E>) new SparseArrayIterator();
-    }
-
-    /**
-     * Devuelve un iterador con los indices de los elementos del
-     * SparseArraySequence return IteratorIF<Integer>
-     */
-    @Override
-    public IteratorIF<Integer> indexIterator() {
-        return new SparseIteratorIndex(this.sequence);
-    }
-
-    /**
      * Nodo cabeza del array Cuando se crea el arreglo es null
      */
     protected NodeIndexedPair sequence;
@@ -272,6 +181,29 @@ public class SparseArraySequence<E> extends Collection<E> implements SparseArray
     }
 
     /**
+     * Devuelve un iterador con los valores de los elementos del
+     * SparseArraySequence return IteratorIF<E>
+     */
+    @Override
+    public IteratorIF<E> iterator() {
+        return (IteratorIF<E>) new SparseArrayIterator();
+    }
+
+    /**
+     * Devuelve un iterador con los indices de los elementos del
+     * SparseArraySequence return IteratorIF<Integer>
+     */
+    @Override
+    public IteratorIF<Integer> indexIterator() {
+        return new SparseIteratorIndex(this.sequence);
+    }
+
+    /**
+     * En esta sección comienzan las clases que hemos implementado para la
+     * solución del ejercicio, Iterator para indices y valores de los elementos.
+     * NodeIndexedPair para manejar los nodos.
+     */
+    /**
      * Clase que modela los nodos para la clase SparseArray Parametro value que
      * guarda la información del nodo Parametro next, que apunta al siguiente
      * elemento
@@ -324,6 +256,79 @@ public class SparseArraySequence<E> extends Collection<E> implements SparseArray
          */
         public void setNext(NodeIndexedPair n) {
             this.next = n;
+        }
+
+    }
+
+    /**
+     * Iterador del arreglo sparseArray Permite iterar entre los elementos de la
+     * clase SparseArraySequence
+     */
+    private class SparseArrayIterator implements IteratorIF<E> {
+
+        private NodeIndexedPair currentNode;
+
+        SparseArrayIterator() {
+            this.currentNode = sequence;
+        }
+
+        /**
+         * Devuelve el objeto actual y avanza una posición
+         *
+         * @return E valor del indexedpair
+         */
+        @Override
+        public E getNext() {
+            E elem = (E) this.currentNode.getValue().getValue();
+            this.currentNode = this.currentNode.getNext();
+            return elem;
+        }
+
+        /**
+         * Verifica si el elemento actual es un elemento
+         *
+         * @return true si hay un elemento false si el elemento es nulo
+         */
+        @Override
+        public boolean hasNext() {
+            return this.currentNode != null;
+        }
+
+        /**
+         * Devuelve al inicio del iterador al primer elemento del array
+         */
+        @Override
+        public void reset() {
+            this.currentNode = sequence;
+        }
+    }
+
+    /**
+     * Iterador de los indices del SparceArraySequence
+     */
+    private class SparseIteratorIndex implements IteratorIF<Integer> {
+
+        private NodeIndexedPair cabeza;
+
+        SparseIteratorIndex(NodeIndexedPair cabeza) {
+            this.cabeza = cabeza;
+        }
+
+        @Override
+        public Integer getNext() {
+            Integer elem = this.cabeza.getValue().getIndex();
+            this.cabeza = this.cabeza.getNext();
+            return elem;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return cabeza != null;
+        }
+
+        @Override
+        public void reset() {
+            this.cabeza = null;
         }
 
     }
