@@ -60,11 +60,16 @@ public class SparseArrayBTree<E> extends Collection<E> implements SparseArrayIF<
 
     @Override
     public E get(int pos) {
-        return this.buscar(pos).getRoot().getValue();
+        BTreeIF<IndexedPair<E>> aux = this.buscar(pos);
+        if (aux == null) {
+            return null;
+        } else {
+            if (aux.getRoot() == null) {
+                return null;
+            }
+            return aux.getRoot().getValue();
+        }
     }
-
- 
-
 
     public BTreeIF<IndexedPair<E>> buscar(int pos) {
         Stack<Boolean> b = this.num2bin(pos);
@@ -72,6 +77,7 @@ public class SparseArrayBTree<E> extends Collection<E> implements SparseArrayIF<
     }
 
     private BTreeIF<IndexedPair<E>> buscar(Stack<Boolean> b, BTreeIF<IndexedPair<E>> current) {
+        if(current == null) return null;
         if (b.size() == 0) {
             return current;
         }
@@ -83,33 +89,61 @@ public class SparseArrayBTree<E> extends Collection<E> implements SparseArrayIF<
             return this.buscar(b, current.getLeftChild());
         }
     }
-    
+
     @Override
     public void delete(int pos) {
         BTreeIF<IndexedPair<E>> r = this.buscar(pos);
-        if(r != null){
-            System.out.println("Lo encontre");
-            delete(num2bin(pos) , btree);
+        if (r != null && r.getRoot() != null) {
+            delete(num2bin(pos), btree);
+            this.size--;
         }
     }
-    
-    private void delete(Stack<Boolean> b, BTreeIF<IndexedPair<E>> current){
-        if(b.size() == 0){
-            int nChild=current.getNumChildren();
-            if(current.getRoot().getValue() != null){
-                current.setRoot(null);
-            }
-            if(nChild == 0) current.setRoot(null);
-            return ;
-        }  
+
+    private void delete(Stack<Boolean> b, BTreeIF<IndexedPair<E>> current) {
+        if (b.size() == 0) {
+            current.setRoot(null);
+            return;
+        }
+
         boolean cmd = b.getTop();
         b.pop();
         if (cmd) {
-            this.delete(b, current.getRightChild());
+            if (current.getRightChild() != null) {
+                this.delete(b, current.getRightChild());
+                if (current.getRightChild().getRoot() == null && current.getRightChild().getNumChildren() == 0) {
+                    current.setRightChild(null);
+                }
+            }
         } else {
-            this.delete(b, current.getLeftChild());
+            if (current.getLeftChild() != null) {
+                this.delete(b, current.getLeftChild());
+                if (current.getLeftChild().getRoot() == null && current.getLeftChild().getNumChildren() == 0) {
+                    current.setLeftChild(null);
+                }
+            }
         }
+//        if(current == null){
+//            return;
+//        }
+//        if (b.size() == 0) {
+//            int nChild = current.getNumChildren();
+//            if (current.getRoot().getValue() != null) {
+//                current.setRoot(null);
+//            }
+//            if (nChild == 0) {
+//                current.setRoot(null);
+//            }
+//            return;
+//        }
+//        boolean cmd = b.getTop();
+//        b.pop();
+//        if (cmd) {
+//            this.delete(b, current.getRightChild());
+//        } else {
+//            this.delete(b, current.getLeftChild());
+//        }
     }
+
     @Override
     public IteratorIF<Integer> indexIterator() {
         IteratorIF<IndexedPair<E>> elementos = this.btree.iterator(BTreeIF.IteratorModes.BREADTH);
@@ -155,5 +189,11 @@ public class SparseArrayBTree<E> extends Collection<E> implements SparseArrayIF<
             this.getElementsIterator(elementos, q);
         }
         return q.iterator();
+    }
+
+    @Override
+    public void clear() {
+        super.clear();
+        this.btree.clear();
     }
 }
