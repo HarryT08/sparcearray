@@ -14,7 +14,7 @@ import java.util.Collections;
 public class Main3 {
     public static void main(String[] args) {
         SparseArrayBTree b = new SparseArrayBTree();
-        b.set(6, "Mundo");
+        b.set(9878, "Mundo");
         b.set(8, "Hola");        
         b.set(5, "Ignite");
         b.set(3, "Probando");
@@ -24,21 +24,21 @@ public class Main3 {
         while(iterator.hasNext()){
             System.out.println(iterator.getNext());
         }
-        b.delete(3);
-        b.delete(6);        
-        System.out.println("luego de eliminar-----------------------------------------------\n");
-        iterator = b.iterator();
-        while(iterator.hasNext()){
-            System.out.println(iterator.getNext());
-        }
-        
-        System.out.println("añadimos---------------------------\n");
-        b.set(3, "probando");
-        System.out.println("Tamaño " + b.btree.size());
-        iterator = b.iterator();
-        while(iterator.hasNext()){
-            System.out.println(iterator.getNext());
-        }
+//        b.delete(3);
+//        b.delete(6);        
+//        System.out.println("luego de eliminar-----------------------------------------------\n");
+//        iterator = b.iterator();
+//        while(iterator.hasNext()){
+//            System.out.println(iterator.getNext());
+//        }
+//        
+//        System.out.println("añadimos---------------------------\n");
+//        b.set(3, "probando");
+//        System.out.println("Tamaño " + b.btree.size());
+//        iterator = b.iterator();
+//        while(iterator.hasNext()){
+//            System.out.println(iterator.getNext());
+//        }
         
     }
 }
